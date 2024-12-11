@@ -51,14 +51,14 @@ async function run() {
 
     // to add search result by title
     app.get('/search', async (req, res) => {
-        const { title  } = req.query;      
-      let option = {}
-      if (title) {
-        option = { jobTitle: { $regex: title, $options: 'i' } };
-      }
-        const result = await jobPostCollection.find(option).toArray();
-        res.send(result);
-    });
+      const { title  } = req.query;      
+    let option = {}
+    if (title) {
+      option = { jobTitle: { $regex: title, $options: 'i' } };
+    }
+      const result = await jobPostCollection.find(option).toArray();
+      res.send(result);
+  });
 
 
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
